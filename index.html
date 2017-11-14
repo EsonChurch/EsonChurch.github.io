@@ -1,27 +1,45 @@
 <!doctype html>  
 <html>  
 <body>  
-    <canvas id="can" width="400" height="400" style="background: Black"></canvas>  
+	
+	<canvas id="can" style="display:block;margin:0 auto;background: Black"></canvas>
+
     <script>  
-        var sn = [ 42, 41 ], dz = 43, fx = 1, n, ctx = document.getElementById("can").getContext("2d");  
-        function draw(t, c) {  
-            ctx.fillStyle = c;  
-            ctx.fillRect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);  
+        var width = 80,height = 40,delay = 100;
+		document.getElementById("can").width = width*20; 
+		document.getElementById("can").height = height*20; 
+		var snake = [ width + 2, width + 1 ], food = width + 3, Orientation = 1, next, ctx = document.getElementById("can").getContext("2d");  
+        function draw(position, color) {  
+            ctx.fillStyle = color;  
+            ctx.fillRect(position % width * 20 + 1, ~~(position / width) * 20 + 1, 18, 18);  
         }  
         document.onkeydown = function(e) {  
-            fx = sn[1] - sn[0] == (n = [ -1, -20, 1, 20 ][(e || event).keyCode - 37] || fx) ? fx : n  
-        };  
+            Orientation = snake[1] - snake[0] == (next = [ -1, -width, 1, width ][(e || event).keyCode - 37] || Orientation) ? Orientation : next;
+			if((e || event).keyCode == 32)
+				delay = 25;
+			if((e || event).keyCode == 17)
+				delay = 10;
+			
+			
+
+        }; 
+		document.onkeyup = function(e){
+			if((e || event).keyCode == 32)
+				delay = 100;
+			if((e || event).keyCode == 17)
+				delay = 100;
+		}
         !function() {  
-            sn.unshift(n = sn[0] + fx);  
-            if (sn.indexOf(n, 1) > 0 || n<0||n>399 || fx == 1 && n % 20 == 0 || fx == -1 && n % 20 == 19)  
-                return alert("GAME OVER");  
-            draw(n, "Lime");  
-            if (n == dz) {  
-                while (sn.indexOf(dz = ~~(Math.random() * 400)) >= 0);  
-                draw(dz, "Yellow");  
+            snake.unshift(next = snake[0] + Orientation);  
+            if (snake.indexOf(next, 1) > 0 || next<0||next>width*height-1 || Orientation == 1 && next % width == 0 || Orientation == -1 && next % width == width-1)  
+				 return alert("GAME OVER");
+            draw(next, "Lime");  
+            if (next == food) {  
+                while (snake.indexOf(food = ~~(Math.random() * width*height)) >= 0);  
+                draw(food, "Yellow");  
             } else  
-                draw(sn.pop(), "Black");  
-                setTimeout(arguments.callee, 130);  
+                draw(snake.pop(), "Black");  
+                setTimeout(arguments.callee, delay);  
         }();  
     </script>  
 </body>  
