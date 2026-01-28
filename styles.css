@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #888;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.current-time {
+    display: inline-block;
+    background-color: #999;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin: 20px 0 40px;
+    font-size: 14px;
+}
+
+.countdowns {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.countdown-card {
+    flex: 1;
+    min-width: calc(25% - 12px);
+    max-width: calc(25% - 12px);
+    background-color: #999;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: left;
+    position: relative;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.countdown-header {
+    margin-bottom: 20px;
+}
+
+.countdown-header-top {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    min-height: 40px;
+}
+
+.countdown-icon {
+    margin-right: 6px;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.countdown-title {
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+    flex: 1;
+}
+
+.countdown-date {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.countdown-timer {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 15px;
+    flex-wrap: nowrap;
+}
+
+.time-block {
+    background-color: #777;
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+    min-width: 45px;
+    flex: 1;
+}
+
+.time-number {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.time-label {
+    display: block;
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background-color: #777;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background-color: #ffc107;
+    border-radius: 3px;
+}
+
+.progress-text {
+    font-size: 10px;
+    white-space: nowrap;
+    min-width: 50px;
+}
+
+.countdown-note {
+    font-size: 12px;
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .countdown-card {
+        min-width: calc(50% - 15px);
+        max-width: calc(50% - 15px);
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .countdowns {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .countdown-card {
+        width: 100%;
+        max-width: 400px;
+        min-width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+    
+    .container {
+        padding: 20px 10px;
+    }
+    
+    .countdown-timer {
+        justify-content: space-between;
+    }
+    
+    .time-block {
+        min-width: 50px;
+        padding: 8px;
+    }
+    
+    .time-number {
+        font-size: 20px;
+    }
+}
