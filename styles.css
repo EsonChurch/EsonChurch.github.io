@@ -33,11 +33,13 @@ h1 {
 
 .current-time {
     display: inline-block;
-    background-color: #999;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 8px 20px;
     border-radius: 20px;
     margin: 20px 0 40px;
     font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .countdowns {
@@ -51,7 +53,8 @@ h1 {
     flex: 1;
     min-width: calc(25% - 12px);
     max-width: calc(25% - 12px);
-    background-color: #999;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 12px;
     text-align: left;
@@ -60,6 +63,7 @@ h1 {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .countdown-header {
@@ -107,12 +111,13 @@ h1 {
 }
 
 .time-block {
-    background-color: #777;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     padding: 8px;
     text-align: center;
     min-width: 45px;
     flex: 1;
+    backdrop-filter: blur(5px);
 }
 
 .time-number {
