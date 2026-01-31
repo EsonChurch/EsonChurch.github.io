@@ -21,7 +21,7 @@ function updateCountdowns() {
     
     // 目标日期
     const targets = [
-        { date: new Date('2026-01-30T20:00:00'), id: 1 },
+        { date: new Date('2026-02-06T20:00:00'), id: 1 },
         { date: new Date('2026-02-14T20:00:00'), id: 2 },
         { date: new Date('2026-03-01T00:00:00'), id: 3 },
         { date: new Date('2026-02-18T09:05:00'), id: 4 }
