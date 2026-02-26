@@ -62,18 +62,21 @@ function updateCountdowns() {
                 const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
                 
-                document.getElementById(`day${index + 1}`).textContent = String(days).padStart(2, '0');
-                document.getElementById(`hour${index + 1}`).textContent = String(hours).padStart(2, '0');
-                document.getElementById(`minute${index + 1}`).textContent = String(minutes).padStart(2, '0');
-                document.getElementById(`second${index + 1}`).textContent = String(seconds).padStart(2, '0');
+                const idMap = [1, 2, 4, 3];
+                const cardId = idMap[index];
+                
+                document.getElementById(`day${cardId}`).textContent = String(days).padStart(2, '0');
+                document.getElementById(`hour${cardId}`).textContent = String(hours).padStart(2, '0');
+                document.getElementById(`minute${cardId}`).textContent = String(minutes).padStart(2, '0');
+                document.getElementById(`second${cardId}`).textContent = String(seconds).padStart(2, '0');
                 
                 const startDate = new Date('2026-01-01T00:00:00');
                 const totalTime = target.date - startDate;
                 const elapsedTime = now - startDate;
                 const progress = Math.min((elapsedTime / totalTime) * 100, 100);
                 
-                document.getElementById(`progress${index + 1}`).style.width = `${progress}%`;
-                document.getElementById(`progress-text${index + 1}`).textContent = `进度 ${progress.toFixed(1)}%`;
+                document.getElementById(`progress${cardId}`).style.width = `${progress}%`;
+                document.getElementById(`progress-text${cardId}`).textContent = `进度 ${progress.toFixed(1)}%`;
                 
                 card.querySelector('.countdown-title').textContent = target.title;
                 card.querySelector('.countdown-icon').textContent = target.icon;
